@@ -1,0 +1,8 @@
+We are grateful to the TinyXML development team for this great library.
+TinyXML website is found at http://www.grinninglizard.com/tinyxml/
+
+In order to install it:
+
+./configure
+make
+make install

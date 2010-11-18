@@ -1,0 +1,424 @@
+<html>
+  <head>
+    <title>API Reference Guide for Conan's Python Bindings</title>
+    <link rel="stylesheet" type="text/css" href="python.css">
+  </head>
+  <body>
+    <center>
+      <h1>API Reference Guide for Conan's Python Bindings</h1>
+      <h2><i>directed_graph</i> class</h2>
+    </center>
+    <h3>directed_graph</h3>
+    <ul>
+      <li>Constructors</li>
+      <ul>
+        <li> <b> directed_graph </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Construct an empty directed graph.
+          <br /> <br />
+        </dl>
+        <li> <b> directed_graph </b> (<i>num_vertices</i>) </li>
+        <ul>
+          <li> num_vertices: Number of vertices (<i>int</i>) </li> <br />
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Construct a graph with <i>num_vertices</i> vertices and zero edges.
+          <br /> <br />
+        </dl>
+        <li> <b> directed_graph </b> (<i>adj_matrix</i>) </li>
+        <ul>
+          <li> adj_matrix: Adjacency matrix (<i>list</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Construct an undirected graph from the adjacency matrix <i>adj_matrix</i>.
+          <br /> <br />
+        </dl>
+      </ul>
+      <li> Manipulation </li>
+      <ul>
+        <li> <b> vertices </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the list of vertices.
+          <br /> <br />
+        </dl>
+        <li> <b> edges </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the list of edges.
+          <br /> <br />
+        </dl>
+        <li> <b> add_vertex </b> (<i>name = ''</i>) </li>
+        <ul>
+          <li> name: Vertex name (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Add a new vertex to the graph and returns the vertex object.
+          <br /> <br />
+        </dl>
+        <li> <b> add_edge </b> (<i>v1, v2</i>) </li>
+        <ul>
+          <li> v1: Source vertex (<i>vertex</i>) </li>
+          <li> v2: Target vertex (<i>vertex</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Add a new edge to the graph, linking <i>v1</i> and <i>v2</i> and returns the edge object.
+          <br /> <br />
+        </dl>
+        <li> <b> remove_vertex </b> (<i>v</i>) </li>
+        <ul>
+          <li> v: Vertex to be removed (<i>vertex</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Remove vertex <i>v</i> from graph and all its incident edges.
+          <br /> <br />
+        </dl>
+        <li> <b> remove_edge </b> (<i>e</i>) </li>
+        <ul>
+          <li> v: Vertex to be removed (<i>vertex</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Remove edge <i>e</i> from graph.
+          <br /> <br />
+        </dl>
+        <li> <b> remove_edge </b> (<i>v1, v2</i>) </li>
+        <ul>
+          <li> v1: Source vertex (<i>vertex</i>) </li>
+          <li> v2: Target vertex (<i>vertex</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Remove edge between <i>v1</i> and <i>v2</i> from graph.
+          <br /> <br />
+        </dl>
+        <li> <b> get_vertex </b> (<i>v_id</i>) </li>
+        <ul>
+          <li> v_id: Vertex id (<i>int</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns the vertex object whose id is <i>v_id</i>.
+          <br /> <br />
+        </dl>
+        <li> <b> get_edge </b> (<i>v1, v2</i>) </li>
+        <ul>
+          <li> v1: Source vertex (<i>vertex</i>) </li>
+          <li> v2: Target vertex (<i>vertex</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns the edge object that links <i>v1</i> and <i>v2</i>.
+              If that edge does not exists, it raises a RuntimeError exception.
+          <br /> <br />
+        </dl>
+        <li> <b> get_adj_matrix </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the graph's adjacency matrix as a list of lists.
+          <br /> <br />
+        </dl>
+      </ul>
+      <li> Properties </li>
+      <ul>
+        <li> <b> num_vertices </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the number of vertices of the graph.
+          <br /> <br />
+        </dl>
+        <li> <b> num_edges </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the number of edges of the graph.
+          <br /> <br />
+        </dl>
+        <li> <b> degree_distribution </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns a <a href="degree_distribution.html">degree_distribution</a> object that you can use to retrieve
+              properties of the graph's degree distribution.
+          <br /> <br />
+        </dl>
+        <li> <b> shortest_paths </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns a <a href="shortest_path.html">shortest_path</a> object that you can use to retrieve
+              graph's and vertex's average shortest path, vertex's eccentricity, and graph's radius, diameter and center.
+          <br /> <br />
+        </dl>
+        <li> <b> betweenness_centrality </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns a <a href="betweenness_centrality.html">betweenness_centrality</a> object that you can use to retrieve
+              graph's, vertex's and edge's betweenness centrality measures.
+          <br /> <br />
+        </dl>
+        <li> <b> connectance </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the connectance of the graph.
+          <br /> <br />
+        </dl>
+        <li> <b> distance </b> (<i>source_vertex, target_vertex</i>) </li>
+        <ul>
+          <li> source_vertex: Source vertex (<i>vertex</i>) </li>
+          <li> target_vertex: Target vertex (<i>vertex</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns the distance between <i>source_vertex</i> and <i>target_vertex</i>.
+          <br /> <br />
+        </dl>
+        <li> <b> asp </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the graph's average shortest path.
+          <br /> <br />
+        </dl>
+        <li> <b> asp_normalized </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the graph's average shortest path normalized by the average shortest path of a random network
+              with same number of vertices and number of edges.
+          <br /> <br />
+        </dl>
+        <li> <b> avg_clustering </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the graph's average clustering coefficient.
+          <br /> <br />
+        </dl>
+        <li> <b> avg_clustering_normalized </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the graph's average clustering coefficient normalized by the average clustering coefficient of
+              a random network with same number of vertices and number of edges.
+          <br /> <br />
+        </dl>
+        <li> <b> entropy </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the topological entropy of the graph.
+          <br /> <br />
+        </dl>
+        <li> <b> fractal_dimension </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns the fractal dimension of the graph.
+              This is calculated using a box-counting-like method.
+          <br /> <br />
+        </dl>
+      </ul>
+      <li> Input/Output </li>
+      <ul>
+        <li> <b> read_dot </b> (<i>input_filename</i>) </li>
+        <ul>
+          <li> input_filename: The name of a DOT file to read from (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>The instance contains the graph stored in <i>input_filename</i>.
+          <br /> <br />
+        </dl>
+        <li> <b> read_csv </b> (<i>input_filename, fields_order = 'stw'</i>) </li>
+        <ul>
+          <li> input_filename: The name of a CSV file to read from (<i>string</i>) </li>
+          <li> fields_order (<i>string</i>): This string defines the order in which the different fields (columns)
+          are ordered into the file. The fields are:
+          </li>
+          <ul>
+            <li> s: source vertex (<i>required</i>) </li>
+            <li> t: target vertex (<i>required</i>) </li>
+            <li> w: edge weight (<i>optional</i>) </li>
+          </ul>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>The instance contains the graph stored in <i>input_filename</i>.
+          <br /> <br />
+        </dl>
+        <li> <b> read_adj_matrix_file </b> (<i>input_filename, separator_char = ' '</i>) </li>
+        <ul>
+          <li> input_filename: The filename to read from (<i>string</i>) </li>
+          <li> separator_char: The character that separates columns. It must be only one character (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>The instance contains the graph stored in <i>input_filename</i>.
+          <br /> <br />
+        </dl>
+        <li> <b> read_graphml </b> (<i>input_filename</i>) </li>
+        <ul>
+          <li> input_filename: The name of a GraphML file to read from (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>The instance contains the graph stored in <i>input_filename</i>.
+          <br /> <br />
+        </dl>
+        <li> <b> read_gml </b> (<i>input_filename</i>) </li>
+        <ul>
+          <li> input_filename: The name of a file in GML format to read from (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>The instance contains the graph stored in <i>input_filename</i>.
+          <br /> <br />
+        </dl>
+        <li> <b> read_pajek </b> (<i>input_filename</i>) </li>
+        <ul>
+          <li> input_filename: The filename to read from (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>The instance contains the graph stored in <i>input_filename</i>.
+          <br /> <br />
+        </dl>
+        <li> <b> write_graphml </b> (<i>output_filename</i>) </li>
+        <ul>
+          <li> output_filename: The name of the file to write to (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Store the network in <i>output_filename</i> in GraphML format.
+          <br /> <br />
+        </dl>
+        <li> <b> write_dot </b> (<i>output_filename</i>) </li>
+        <ul>
+          <li> output_filename: The name of the file to write to (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Store the network in <i>output_filename</i> in DOT format.
+          <br /> <br />
+        </dl>
+        <li> <b> write_gml </b> (<i>output_filename</i>) </li>
+        <ul>
+          <li> output_filename: The name of the file to write to (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Store the network in <i>output_filename</i> in GML format.
+          <br /> <br />
+        </dl>
+        <li> <b> write_csv </b> (<i>output_filename, fields_order = 'stw'</i>) </li>
+        <ul>
+          <li> output_filename: The name of the file to write to (<i>string</i>) </li>
+          <li> fields_order (<i>string</i>): This string defines the order in which the different fields (columns)
+          are ordered into the file. The fields are:
+          </li>
+          <ul>
+            <li> s: source vertex (<i>required</i>) </li>
+            <li> t: target vertex (<i>required</i>) </li>
+            <li> w: edge weight (<i>optional</i>) </li>
+          </ul>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Store the network in <i>output_filename</i> in CSV format.
+          <br /> <br />
+        </dl>
+        <li> <b> write_pajek </b> (<i>output_filename</i>) </li>
+        <ul>
+          <li> output_filename: The name of the file to write to (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Store the network in <i>output_filename</i> in the file format used by the program Pajek.
+          <br /> <br />
+        </dl>
+        <li> <b> write_adj_matrix_file </b> (<i>output_filename</i>) </li>
+        <ul>
+          <li> output_filename: The name of the file to write to (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Store the network in the plain text adjacency matrix file <i>output_filename</i>.
+          <br /> <br />
+        </dl>
+        <li> <b> save_as </b> (<i>image_filename, program = 'neato'</i>) </li>
+        <ul>
+          <li> image_filename: The name of the file to write to (<i>string</i>) </li>
+          <li> program: The name of GraphViz program to draw the network (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Save a drawing of the network in <i>image_filename</i>.
+          <br /> <br />
+        </dl>
+        <li> <b> view </b> (<i>program = 'neato'</i>) </li>
+        <ul>
+          <li> program: The name of GraphViz program to draw the network (<i>string</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Draw and show the network in a GTK+/Qt window.
+          <br /> <br />
+        </dl>
+      </ul>
+      <li> Subgraphs, modules and communities </li>
+      <ul>
+        <li> <b> subgraph </b> (<i>l</i>) </li>
+        <ul>
+          <li> l: A list of vertices (<i>list</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns a subgraph from the given list of vertices.
+              The subgraph is itself a graph object.
+          <br /> <br />
+        </dl>
+        <li> <b> newman_communities </b> (<i>check_quality_fcn</i>) </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns a list of modules.
+              A module is a list of vertices.
+              To compute modules, the function maximizes the modularity of the network.
+              For further reference see Newman (2006).
+          <br /> <br />
+        </dl>
+        <li> <b> newman_two_communities </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Returns a list of only two modules.
+              A module is a list of vertices.
+              To compute modules, the function maximizes the modularity of the network.
+              The two modules are the first division the algorithm founds.
+              For further reference see Newman (2006).
+          <br /> <br />
+        </dl>
+      </ul>
+      <li> Transformations </li>
+      <ul>
+        <li> <b> booleanize </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>All edges have a weight of 1.
+          <br /> <br />
+        </dl>
+        <li> <b> transpose </b> () </li>
+        <dl>
+          <dt>Effects
+          <dd>Reverses edges direction.
+          <br /> <br />
+        </dl>
+        <li> <b> boxcounting </b> () </li>
+        <ul>
+          <li> boxsize: The size of boxes used for grouping vertices together (<i>decimal</i>) </li>
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns the graph object resulting from a box-counting renormalization process for a certain box size.
+          <br /> <br />
+        </dl>
+      </ul>
+    </ul>
+  </body>
+</html>

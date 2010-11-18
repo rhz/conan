@@ -1,0 +1,57 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.64])
+AC_INIT([conan], [0.99], [rata@cbuc.cl])
+AM_INIT_AUTOMAKE([1.9 foreign])
+LT_INIT
+AM_PATH_PYTHON([2.5])
+AM_MAINTAINER_MODE
+
+# Checks for programs.
+AC_PROG_CXX
+AC_LANG_CPLUSPLUS
+
+# Checks for libraries.
+AC_CHECK_LIB([m], [log],, AC_MSG_ERROR(could not find the C math library))
+AC_CHECK_LIB([gslcblas], [cblas_sgemv],, AC_MSG_ERROR(could not find GSL BLAS))
+AC_CHECK_LIB([gsl], [gsl_matrix_set],, AC_MSG_ERROR(could not find the Gnu Scientific Library (GSL)))
+
+# Check for Python and Boost.Python
+m4_include([../ax_python.m4])
+AX_PYTHON
+LIBS="$LIBS -l$PYTHON_LIB"
+
+m4_include([../ax_boost_python.m4])
+AX_BOOST_PYTHON
+LIBS="$LIBS -l$BOOST_PYTHON_LIB"
+
+# TinyXML and ARACNe
+TINYXML_LIB="-L../contrib/tinyxml/.libs/"
+AC_ARG_WITH([system-libtinyxml],
+            AS_HELP_STRING([--with-system-libtinyxml],[link against system-wide installed libtinyxml]),
+            [if test "x$with_system_libtinyxml" == "xyes"; then
+               TINYXML_LIB=""
+             fi])
+AC_SUBST(TINYXML_LIB)
+
+ARACNE_LIB="-L../contrib/aracne/.libs/"
+AC_ARG_WITH([system-libaracne],
+            AS_HELP_STRING([--with-system-libaracne],[link against system-wide installed libaracne]),
+            [if test "x$with_system_libaracne" == "xyes"; then
+               ARACNE_LIB=""
+             fi])
+AC_SUBST(ARACNE_LIB)
+
+# Checks for header files.
+AC_CHECK_HEADERS([fcntl.h stddef.h stdlib.h string.h termios.h unistd.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_C_INLINE
+AC_TYPE_SIZE_T
+
+# Checks for library functions.
+
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT

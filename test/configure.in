@@ -1,0 +1,32 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.64])
+AC_INIT([conan], [0.99], [rata@cbuc.cl])
+AM_INIT_AUTOMAKE([1.9 foreign])
+AM_MAINTAINER_MODE
+
+# Checks for programs.
+AC_PROG_CXX
+
+# Checks for libraries.
+AC_CHECK_LIB([m], [log],, AC_MSG_ERROR(could not find the C math library))
+AC_CHECK_LIB([gslcblas], [cblas_sgemv],, AC_MSG_ERROR(could not find GSL BLAS))
+AC_CHECK_LIB([gsl], [gsl_matrix_set],, AC_MSG_ERROR(could not find the Gnu Scientific Library (GSL)))
+AC_CHECK_LIB([boost_unit_test_framework], [main],, AC_MSG_ERROR(could not find the Boost Unit Test Framework))
+
+# Checks for header files.
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_TYPE_SIZE_T
+
+# Checks for library functions.
+AC_FUNC_MALLOC
+
+AC_CONFIG_FILES([Makefile])
+#                 io/Makefile
+#                 inference/Makefile
+#                 graph_models/Makefile
+#                 properties/Makefile])
+AC_OUTPUT

@@ -1,0 +1,9 @@
+List of tasks:
+ * all paths between two vertices
+ * find loops
+ * union, intersection and difference (by id, by name)
+ * k-neighbours ?
+ * critical path method ?
+ * p-cliques, clique decomposition ?
+ * pattern and motif finding ?
+ * valgrind

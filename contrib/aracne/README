@@ -1,0 +1,8 @@
+We are grateful to Califano et al. for permitting us to use their code.
+ARACNe website is found at http://amdec-bioinfo.cu-genome.org/html/ARACNE.htm
+
+In order to install it:
+
+./configure
+make
+make install

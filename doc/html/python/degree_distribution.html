@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <title>API Reference Guide for Conan's Python Bindings</title>
+    <link rel="stylesheet" type="text/css" href="python.css">
+  </head>
+  <body>
+    <center>
+      <h1>API Reference Guide for Conan's Python Bindings</h1>
+      <h2><i>undirected_degree_distribution</i> and <i>directed_degree_distribution</i> classes</h2>
+    </center>
+    <h3>degree_distribution</h3>
+    <ul>
+      <li>Constructors</li>
+      <ul>
+        <li> <b> degree_distribution </b> (<i>g</i>) </li>
+        <dl>
+          <dt>Effects
+          <dd>Construct a degree distribution object for a network <i>g</i>.
+          <br /> <br />
+        </dl>
+      </ul>
+      <li> <b> P </b> (<i>k</i>) </li>
+      <dl>
+        <dt>Effects
+        <dd>Returns the probability for a certain degree <i>k</i>.
+        <br /> <br />
+      </dl>
+      <li> <b> vertices </b> (<i>k</i>) </li>
+      <dl>
+        <dt>Effects
+        <dd>Returns a list of vertices with a degree <i>k</i>.
+        <br /> <br />
+      </dl>
+      <li> <b> non_zero_degrees </b> () </li>
+      <dl>
+        <dt>Effects
+        <dd>Returns the list of degrees that have a probability different than zero.
+        <br /> <br />
+      </dl>
+      <li> <b> gamma </b> () </li>
+      <dl>
+        <dt>Effects
+        <dd>Returns the value of the power-law decay exponent.
+        <br /> <br />
+      </dl>
+      <li> <b> exp_decay </b> () </li>
+      <dl>
+        <dt>Effects
+        <dd>Returns &lambda; for the exponential fit A * e <sup>(&lambda; * k)</sup> + C.
+        <br /> <br />
+      </dl>
+      <li> <b> slope </b> () </li>
+      <dl>
+        <dt>Effects
+        <dd>Returns the slope for the linear fit.
+        <br /> <br />
+      </dl>
+      <li> <b> r </b> (<i>fit_type</i>) </li>
+      <ul>
+        <li> fit_type (<i>string</i>): Possible values are: 'linear', 'exponential', and 'power'. </li> <br />
+      </ul>
+      <dl>
+        <dt>Effects
+        <dd>Returns the Pearson's correlation coefficient for a certain fit.
+        <br /> <br />
+      </dl>
+      <li> <b> rr </b> () </li>
+      <ul>
+        <li> fit_type (<i>string</i>): Possible values are: 'linear', 'exponential', and 'power'. </li> <br />
+      </ul>
+      <dl>
+        <dt>Effects
+        <dd>Returns the squared Pearson's correlation coefficient for a certain fit.
+        <br /> <br />
+      </dl>
+      <li> <b> entropy </b> () </li>
+      <dl>
+        <dt>Effects
+        <dd>Returns the statistical entropy of the distribution.
+        <br /> <br />
+      </dl>
+      <li> <b> best_fit </b> () </li>
+      <dl>
+        <dt>Effects
+        <dd>Returns a string that allows to identify which was the best fit,
+            based on the values of the squared Pearson's correlation coefficients.
+            Possible return values are: 'linear', 'exponential', and 'power'.
+        <br /> <br />
+      </dl>
+    </ul>
+  </body>
+</html>

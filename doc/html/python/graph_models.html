@@ -1,0 +1,201 @@
+<html>
+  <head>
+    <title>API Reference Guide for Conan's Python Bindings</title>
+    <link rel="stylesheet" type="text/css" href="python.css">
+  </head>
+  <body>
+    <center>
+      <h1>API Reference Guide for Conan's Python Bindings</h1>
+      <h2><i>graph_models</i> module</h2>
+    </center>
+    <h3>Graph generator functions</h3>
+    <ul>
+      <li>Random graphs</li>
+      <ul>
+        <li> <b> generate_random_graph </b> (<i>num_vertices, num_edges</i>) </li>
+        This function is just a wrapper for the Boost Graph Library function
+        <i><a href="http://www.boost.org/doc/libs/1_36_0/libs/graph/doc/random.html">generate_random_graph</a></i>.
+        <ul>
+          <li> num_vertices: Number of vertices of the graph to be created (<i>integer</i>) </li>
+          <li> num_edges: Number of edges (<i>integer</i>) </li> <br />
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns a graph with <i>num_vertices</i> vertices and <i>num_edges</i> edges. Source and target
+            vertices of each edge are randomly choosen.
+          <br />
+          <dt>Preconditions
+          <dd><i>num_vertices</i> &gt; 0 and <i>num_edges</i> &gt; 0
+          <br />
+          <dt>Complexity
+          <dd>O(2 * V * E)
+          <br /> <br />
+        </dl>
+        <li> <b> generate_erdos_renyi_graph </b> (<i>num_vertices, p</i>) </li>
+        Generates a graph according to the Erdos-Renyi model for random graphs.
+        <ul>
+          <li> num_vertices: Number of vertices (<i>integer</i>) </li>
+          <li> p: Probability for any two vertices to be connected (<i>float</i>) </li> <br />
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns a graph with <i>num_vertices</i> vertices. The number of edges depend upon the probability <i>p</i>.
+          <br />
+          <dt>Preconditions
+          <dd><i>num_vertices</i> &gt; 0 and 0 &le; <i>p</i> &le; 1
+          <br />
+          <dt>Complexity
+          <dd>O(V&sup2;)
+          <br /> <br />
+        </dl>
+      </ul>
+      <li>Canonical graphs</li>
+      <ul>
+        <li> <b> generate_star_graph </b> (<i>num_vertices, num_centers</i>) </li>
+        The star graph is a graph in which all vertices are connected to normally one vertex of the graph.
+        This vertex is called the center of the graph.
+        <ul>
+          <li> num_vertices: Number of vertices (<i>integer</i>) </li>
+          <li> num_centers: Number of centers of the star (<i>integer</i>) </li> <br />
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns a star graph.
+          <br />
+          <dt>Preconditions
+          <dd><i>num_vertices</i> &gt; 0 and <i>num_centers</i> &gt; 0
+          <br />
+          <dt>Complexity
+          <dd>O(V * num_centers)
+          <br /> <br />
+        </dl>
+        <li> <b> generate_regular_lattice </b> (<i>num_vertices, degree</i>) </li>
+        <ul>
+          <li> num_vertices: Number of vertices (<i>integer</i>) </li>
+          <li> degree: Number of edges incident to each vertex (<i>integer</i>) </li> <br />
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns a graph in which each vertex is connected to the closest <i>degree</i> vertices.
+          <br />
+          <dt>Preconditions
+          <dd><i>num_vertices</i> &gt; 0 and <i>degree</i> must be even
+          <br />
+          <dt>Complexity
+          <dd>O(V * degree)
+          <br /> <br />
+        </dl>
+        <li> <b> generate_complete_graph </b> (<i>num_vertices</i>) </li>
+        In a complete graph, all vertices are connected to each other.
+        <ul>
+          <li> num_vertices: Number of vertices (<i>integer</i>) </li> <br />
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns a complete graph.
+          <br />
+          <dt>Preconditions
+          <dd><i>num_vertices</i> &gt; 0
+          <br />
+          <dt>Complexity
+          <dd>O(V&sup2;)
+          <br /> <br />
+        </dl>
+      </ul>
+      <li>Modern graph models</li>
+      <ul>
+        <li> <b> generate_small_world_network </b> (<i>num_vertices, degree, percent_replaced_edges</i>) </li>
+        <ul>
+          <li> num_vertices: Number of vertices (<i>integer</i>) </li>
+          <li> degree: The degree which will be used to create the base regular lattice (<i>integer</i>) </li>
+          <li> percent_replaced_edges: Percentage of the total number of edges to be replaced by random edges (<i>float</i>) </li> <br />
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns a graph that was created based on the Watts-Strogatz model for small-world networks.
+          <br />
+          <dt>Preconditions
+          <dd><i>num_vertices</i> &gt; 0, <i>degree</i> must be even and 0 &le; <i>percent_replaced_edges</i> &le; 1
+          <br />
+          <dt>Complexity
+          <dd>O()
+          <br /> <br />
+        </dl>
+        <li> <b> generate_Demetrius_Manke_network </b> (<i>num_vertices, edges_by_vertex, T</i>) </li>
+        <ul>
+          <li> num_vertices: Number of vertices (<i>integer</i>) </li>
+          <li> edges_by_vertex: Number of edges to be added by each new vertex added to the graph (<i>integer</i>) </li>
+          <li> T: This parameter determines how strictly the maximal entropic principle is enforced (<i>float</i>) </li> <br />
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns a graph that was created based on the Demetrius-Manke model for network's evolution.
+          <br />
+          <dt>Preconditions
+          <dd><i>num_vertices</i> &gt; 0 and <i>edges_by_vertex</i> &gt; 0
+          <br />
+          <dt>Complexity
+          <dd>O()
+          <br /> <br />
+        </dl>
+        Related function: <br />
+        <ul>
+          <li> <b> add_vertex_as_Demetrius_Manke </b> (<i>g, edges_by_vertex, T</i>) </li>
+          <ul>
+            <li> g: An <i>undirected_graph</i> </li>
+            <li> edges_by_vertex: Number of edges to be added by each new vertex added to the graph (<i>integer</i>) </li>
+            <li> T: This parameter determines how strictly the maximal entropic principle is enforced (<i>float</i>) </li> <br />
+          </ul>
+          <dl>
+            <dt>Effects
+            <dd>Add a vertex to <i>g</i> according to the network's evolution model of L. Demetrius and T. Manke.
+            <br />
+            <dt>Preconditions
+            <dd><i>edges_by_vertex</i> &gt; 0
+            <br />
+            <dt>Complexity
+            <dd>O()
+            <br /> <br />
+          </dl>
+        </ul>
+        <li> <b> generate_scale_free_network </b> (<i>num_vertices, edges_by_vertex</i>) </li>
+        <ul>
+          <li> num_vertices: Number of vertices (<i>integer</i>) </li>
+          <li> edges_by_vertex: Number of edges to be added by each new vertex added to the graph (<i>integer</i>) </li> <br />
+        </ul>
+        <dl>
+          <dt>Effects
+          <dd>Returns a graph that was created based on the Barabasi-Albert model of <i>Prefential Attachment</i>.
+          <br />
+          <dt>Preconditions
+          <dd><i>num_vertices</i> &gt; 0 and <i>edges_by_vertex</i> &gt; 0
+          <br />
+          <dt>Complexity
+          <dd>O()
+          <br /> <br />
+        </dl>
+        Related function: <br />
+        <ul>
+          <li> <b> expand_scale_free_network </b> (<i>g, num_vertices, edges_by_vertex</i>) </li>
+          <ul>
+            <li> g: An <i>undirected_graph</i> </li>
+            <li> num_vertices: Number of vertices to be added to g (<i>integer</i>) </li>
+            <li> edges_by_vertex: Number of edges to be added by each new vertex added to the graph (<i>integer</i>) </li> <br />
+          </ul>
+          <dl>
+            <dt>Effects
+            <dd>Add <i>num_vertices</i> vertices to <i>g</i> according to the Prefential Attachment model. Each vertex added connects to the existing graph
+              with <i>edges_by_vertex</i> edges.
+            <br />
+            <dt>Preconditions
+            <dd><i>num_vertices</i> &gt; 0 and <i>edges_by_vertex</i> &gt; 0
+            <br />
+            <dt>Complexity
+            <dd>O()
+            <br /> <br />
+          </dl>
+        </ul>
+      </ul>
+    </ul>
+  </body>
+</html>
