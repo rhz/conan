@@ -471,10 +471,7 @@ namespace conan { namespace inference { namespace mi {
     }
 
     matrix.write(data, ids, p);
-
-    Graph out_g( read_aracne_output_file<Graph>(p.outfile) );
-
-    return out_g;
+    return read_aracne_output_file<Graph>(p.outfile);
   }
 
 }}} // conan::inference::mi

@@ -185,7 +185,7 @@ namespace conan {
           if (pAttrib->QueryDoubleValue(&weight) != TIXML_SUCCESS)
             std::cerr << "weight isn't a double presicion number" << std::endl;
         }
-        else if (!strcmp(pAttrib->Name(), "name"))
+        else if (!strcmp(pAttrib->Name(), "label"))
         {
           const char *pName = pAttrib->Value();
           if (pName)

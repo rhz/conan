@@ -46,10 +46,12 @@
 
 // Boost.Random
 #include <boost/random.hpp>
-#ifdef __linux__
-  #include <conan/utils/random_device.hpp>
-#else
-  #define DETERMINISTIC_RNG
+#ifndef DETERMINISTIC_RNG
+  #ifdef __linux__
+    #include <conan/utils/random_device.hpp>
+  #else
+    #define DETERMINISTIC_RNG
+  #endif
 #endif
 
 // Macros
