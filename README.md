@@ -18,4 +18,4 @@ To install it run the following commands inside the main directory:
 
 Note that Conan's compilation requires GCC version 4.3 or higher!
 Also, Conan requires Autotools, the GNU Scientific Library (GSL) and the Boost libraries
-to be properly setted up in your computer.
+to be properly set up in your computer.
